@@ -1,0 +1,35 @@
+{
+  "name": "google-finance-quote",
+  "version": "1.0.1",
+  "description": "Node Google Finance API wrapper for free. No API key is required!",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/otoneko1102/google-finance-quote.git"
+  },
+  "keywords": [
+    "google",
+    "api",
+    "finance",
+    "exchange",
+    "rate",
+    "quote",
+    "wrapper",
+    "free",
+    "proxy"
+  ],
+  "author": "otoneko.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/otoneko1102/google-finance-quote/issues"
+  },
+  "homepage": "https://github.com/otoneko1102/google-finance-quote#readme",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "https-proxy-agent": "^7.0.5"
+  }
+}
