@@ -5,9 +5,11 @@ No API key is required!
 ## Usage
 ### Get Started
 ```js
-const Finance = require("google-finance-quote");
+const { Finance, symbols } = require("google-finance-quote");
 
-const finance = new Finance(); // You can use this: new Finance({ from 'usd', to: 'jpy' });
+console.log(symbols); // Returns available symbols.
+
+const finance = new Finance(); // You can use this: new Finance({ from 'USD', to: 'JPY' });
 // You can use http(s) proxies.
 /*
 const proxy = {
@@ -19,8 +21,8 @@ const finance = new Finance({ proxy });
 */
 
 finance
-  .setFrom('usd');
-  .setTo('jpy');
+  .setFrom('USD');
+  .setTo('JPY');
 
 (async () => {
   console.log(await finance.quote()); // { success: true, rate: 150.94225699999998 }

@@ -15,8 +15,8 @@ declare module 'google-finance-quote' {
   /**
    * @interface FinanceParams
    * @description Interface for Finance class constructor parameters.
-   * @property {string} from - The original currency unit.
-   * @property {string} to - The desired currency unit.
+   * @property {string} from - The original currency symbol.
+   * @property {string} to - The desired currency symbol.
    * @property {Proxy | undefined} proxy - Proxy options.
    */
   interface FinanceParams {
@@ -37,7 +37,7 @@ declare module 'google-finance-quote' {
     /**
      * @function setFrom
      * @description Set the parameter of from.
-     * @param {string} from - The original currency unit.
+     * @param {string} from - The original currency symbol.
      * @returns {Finance} Returns the instance of Finance for chaining.
      */
     setFrom(from: string): Finance;
@@ -45,7 +45,7 @@ declare module 'google-finance-quote' {
     /**
      * @function setTo
      * @description Set the parameter of to.
-     * @param {string} to - The desired currency unit.
+     * @param {string} to - The desired currency symbol.
      * @returns {Finance} Returns the instance of Finance for chaining.
      */
     setTo(to: string): Finance;

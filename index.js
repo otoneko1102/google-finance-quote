@@ -1,25 +1,26 @@
 const axios = require('axios');
 const HttpsProxyAgent = require('https-proxy-agent');
 const { API_URL } = require('./lib/config');
+const symbols = require('./lib/symbols');
 
 /**
  * @class Finance
  * @description The Finance class is designed to easily check the exchange rate.
  * @param {Object} p - The param includes p.from and p.to.
- * @param {string} p.from - The original currency unit.
- * @param {string} p.to - The desired currency unit.
+ * @param {string} p.from - The original currency symbol.
+ * @param {string} p.to - The desired currency symbol.
  * @param {object | undefined} p.proxy - Proxy options.
  */
 class Finance {
   constructor(p) {
     if (
       typeof p === 'object' &&
-      typeof p?.from === 'string' &&
-      typeof p?.to === 'string'
+      symbols.includes(from?.toUpperCase()) &&
+      symbols.includes(to?.toUpperCase())
     ) {
       this.param = {
-        from: p.from,
-        to: p.to
+        from: p.from.toUpperCase(),
+        to: p.to.toUpperCase()
       };
     } else if (typeof p === 'undefined') {
       this.param = {
@@ -47,24 +48,24 @@ class Finance {
   /**
    * @function setFrom
    * @description Set the parameter of from.
-   * @param {string} from - The original currency unit.
+   * @param {string} from - The original currency symbol.
    * @returns {Finance} Returns the instance of Finance for chaining.
    */
   setFrom(from) {
-    if (typeof from !== 'string') throw new Error('from must be string.');
-    this.param.from = from;
+    if (!symbols.includes(from?.toUpperCase())) throw new Error('invalid from.');
+    this.param.from = from.toUpperCase();
     return this;
   }
 
   /**
    * @function setTo
    * @description Set the parameter of to.
-   * @param {string} to - The desired currency unit.
+   * @param {string} to - The desired currency symbol.
    * @returns {Finance} Returns the instance of Finance for chaining.
    */
   setTo(to) {
-    if (typeof to !== 'string') throw new Error('to must be string.');
-    this.param.to = to;
+    if (!symbols.includes(to?.toUpperCase())) throw new Error('invalid to.');
+    this.param.to = to.toUpperCase();
     return this;
   }
 
@@ -88,8 +89,8 @@ class Finance {
     const result = { success: false, rate: 0 };
     try {
       if (typeof amount !== 'number') throw new Error('amount must be number.');
-      const from = this.param.from?.toUpperCase(), to = this.param.to.toUpperCase();
-      if (typeof from !== 'string' || typeof to !== 'string') throw new Error('from and/or to are invalid.');
+      const from = this.param.from, to = this.param.to;
+      if (!symbols?.includes(from) || !symbols?.includes(to)) throw new Error('from and/or to are invalid.');
 
       const url = `${API_URL}${from}-${to}`;
 
@@ -131,4 +132,5 @@ class Finance {
   }
 }
 
-module.exports = Finance;
+module.exports.Finance = Finance;
+module.exports.symbols = symbols;
