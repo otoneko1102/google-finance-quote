@@ -15,17 +15,19 @@ class Finance {
   constructor(p) {
     if (
       typeof p === 'object' &&
-      symbols.includes(from?.toUpperCase()) &&
-      symbols.includes(to?.toUpperCase())
+      (
+        symbols.includes(p.from?.toUpperCase()) ||
+        symbols.includes(p.to?.toUpperCase())
+      )
     ) {
       this.param = {
-        from: p.from.toUpperCase(),
-        to: p.to.toUpperCase()
+        from: p.from?.toUpperCase() || null,
+        to: p.to?.toUpperCase() || null
       };
     } else if (typeof p === 'undefined') {
       this.param = {
-        from: undefined,
-        to: undefined
+        from: null,
+        to: null
       };
     } else throw new Error('Invalid parameters.');
 
