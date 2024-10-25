@@ -22,6 +22,7 @@ declare module 'google-finance-quote' {
   interface FinanceParams {
     from: string;
     to: string;
+    proxy?: Proxy;
   }
 
   /**
