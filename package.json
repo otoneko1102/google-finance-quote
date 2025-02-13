@@ -1,6 +1,6 @@
 {
   "name": "google-finance-quote",
-  "version": "2.0.4",
+  "version": "2.1.0",
   "description": "Node Google Finance API wrapper for free. No API key is required!",
   "main": "index.js",
   "types": "index.d.ts",
