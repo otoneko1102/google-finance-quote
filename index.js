@@ -134,5 +134,9 @@ class Finance {
   }
 }
 
-module.exports.Finance = Finance;
-module.exports.symbols = symbols;
+module.exports = {
+  Finance,
+  symbols,
+  currencyCodesSymbols: require('./lib/currencyCodesSymbols'),
+  cryptocurrencyCodesSymbols: require('./lib/cryptoCurrencyCodesSymbols')
+};

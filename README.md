@@ -5,9 +5,11 @@ No API key is required!
 ## Usage
 ### Get Started
 ```js
-const { Finance, symbols } = require("google-finance-quote");
+const { Finance, symbols, currencyCodesSymbols, cryptoCurrencyCodesSymbols } = require("google-finance-quote");
 
 console.log(symbols); // Returns available symbols.
+console.log(currencyCodesSymbols); // Returns available currency codes symbols.
+console.log(cryptoCurrencyCodesSymbols); // Returns available crypto currency codes symbols.
 
 const finance = new Finance(); // You can use this: new Finance({ from 'USD', to: 'JPY' });
 // You can use http(s) proxies.

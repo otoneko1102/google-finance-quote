@@ -1,6 +1,6 @@
 {
   "name": "google-finance-quote",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Node Google Finance API wrapper for free. No API key is required!",
   "main": "index.js",
   "types": "index.d.ts",
@@ -19,6 +19,11 @@
     "rate",
     "quote",
     "wrapper",
+    "money",
+    "code",
+    "codes",
+    "data",
+    "lib",
     "free",
     "proxy"
   ],
@@ -32,8 +37,7 @@
     "axios": "^1.7.9",
     "https-proxy-agent": "^7.0.6"
   },
-  "directories": {
-    "lib": "lib",
-    "test": "tests"
+  "devDependencies": {
+    "@types/node": "^22.13.2"
   }
 }
