@@ -1,28 +1,13 @@
 declare module 'google-finance-quote' {
   /**
-   * @interface Proxy
-   * @description Interface for proxy parameters.
-   * @property {string} host - Proxy host name.
-   * @property {number | undefined} - Proxy port number.
-   * @property {'http' | 'https'} protocol - Proxy protocol type.
-   */
-  interface Proxy {
-    host: string;
-    port?: number,
-    protocol: 'http' | 'https';
-  }
-
-  /**
    * @interface FinanceParams
    * @description Interface for Finance class constructor parameters.
    * @property {string} from - The original currency symbol.
    * @property {string} to - The desired currency symbol.
-   * @property {Proxy | undefined} proxy - Proxy options.
    */
   interface FinanceParams {
     from: string;
     to: string;
-    proxy?: Proxy;
   }
 
   /**

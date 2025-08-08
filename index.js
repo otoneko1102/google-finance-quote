@@ -9,7 +9,6 @@ const symbols = require('./lib/symbols');
  * @param {Object} p - The param includes p.from and p.to.
  * @param {string} p.from - The original currency symbol.
  * @param {string} p.to - The desired currency symbol.
- * @param {object | undefined} p.proxy - Proxy options.
  */
 class Finance {
   constructor(p) {
@@ -30,21 +29,6 @@ class Finance {
         to: null
       };
     } else throw new Error('Invalid parameters.');
-
-    this.proxy = {};
-    if (typeof p?.proxy === 'object') {
-      if (
-        typeof p.proxy?.host === 'string' &&
-        (
-          p.proxy.protocol === 'http' ||
-          p.proxy.protocol === 'https'
-        )
-      ) {
-        this.proxy.host = p.proxy.host;
-        if (typeof p.proxy?.port === 'number') this.proxy.port = p.proxy.port;
-        this.proxy.protocol = p.proxy.protocol;
-      }
-    }
   }
 
   /**
@@ -96,25 +80,7 @@ class Finance {
 
       const url = `${API_URL}${from}-${to}`;
 
-      let response;
-      if (this.proxy) {
-        const axiosConfig = {};
-        if (this.proxy.protocol === 'http') {
-          axiosConfig.proxy = {
-            host: this.proxy.host,
-          }
-          if (this.proxy.port) axiosConfig.proxy.port = this.proxy.port;
-        } else if (this.proxy.protocol === 'https') {
-          const proxyUrl = `http://${this.proxy.host}${this.proxy.port ? `:${this.proxy.port}` : ''}`;
-          const agent = new HttpsProxyAgent(proxyUrl);
-          axiosConfig.httpsAgent = agent;
-          axiosConfig.proxy = false;
-        }
-        response = await axios.get(url, axiosConfig);
-      } else {
-        response = await axios.get(url);
-      }
-
+      const response = await axios.get(url);
       const html = response.data;
       const startIndex =
         html.indexOf(

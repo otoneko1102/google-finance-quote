@@ -1,9 +1,14 @@
 # google-finance-quote
+
 Node Google Finance API wrapper for free.
 No API key is required!
 > Note: This results may vary by up to 20 minutes.
+> Note: `3.0.0 <= x` doesn't support proxies.
+
 ## Usage
+
 ### Get Started
+
 ```js
 const { Finance, symbols, currencyCodesSymbols, cryptoCurrencyCodesSymbols } = require("google-finance-quote");
 
@@ -12,15 +17,6 @@ console.log(currencyCodesSymbols); // Returns available currency codes symbols.
 console.log(cryptoCurrencyCodesSymbols); // Returns available crypto currency codes symbols.
 
 const finance = new Finance(); // You can use this: new Finance({ from 'USD', to: 'JPY' });
-// You can use http(s) proxies.
-/*
-const proxy = {
-  host: 'example.com',
-  port: 2000,
-  protocol: 'http'
-}
-const finance = new Finance({ proxy });
-*/
 
 finance
   .setFrom('USD');
@@ -30,21 +26,18 @@ finance
   console.log(await finance.quote()); // { success: true, rate: 150.94225699999998 }
 })();
 ```
+
 ### Class
-<strong>Finance({ from?:string, to?:string, proxy?:object })</strong>
 
-### Functions
-- <strong>.setFrom(from: string)</strong>
-Set the parameter of from.
+- **Finance({ from?: string, to?: string })**
 
-- <strong>.setTo(to: string)</strong>
-Set the parameter of to.
+  - **.setFrom(from: string)**
+  Set the parameter of from.
+  - **.setTo(to: string)**
+  Set the parameter of to.
+  - **.getParam(): object**
+  Returns the current param.
+  - **.quote(amount?: number): Promise<{ success: boolean, rate: number }>**
+  Returns the converted amount based on the exchange rate.
 
-- <strong>.getParam(): object</strong>
-Returns the current param.
-
-- <strong>.quote(amount?: number): Promise<{ success: boolean, rate: number }></strong>
-Returns the converted amount based on the exchange rate.
 > Note: If the current rate cannot be obtained due to rate limits or network errors, success: false is returned.
-## Get Support
-<a href="https://discord.gg/yKW8wWKCnS"><img src="https://discordapp.com/api/guilds/1005287561582878800/widget.png?style=banner4" alt="Discord Banner"/></a>
