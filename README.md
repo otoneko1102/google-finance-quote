@@ -2,7 +2,7 @@
 
 Node Google Finance API wrapper for free.
 No API key is required!
-> Note: This results may vary by up to 20 minutes.
+> Note: This results may vary by up to 20 minutes.  
 > Note: `3.0.0 <= x` doesn't support proxies.
 
 ## Usage
