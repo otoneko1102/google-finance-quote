@@ -16,7 +16,7 @@
     "build:esm": "tsc -p tsconfig.esm.json",
     "build:post": "node ./build/copy-types.js && node ./build/rename-esm.js",
     "build": "npm run build:cjs && npm run build:esm && npm run build:post",
-    "prepare": "npm run build",
+    "prepublishOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write ./src/ ./build/"
   },
