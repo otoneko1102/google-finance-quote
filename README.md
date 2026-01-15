@@ -2,14 +2,21 @@
 
 Node Google Finance API wrapper for free.
 No API key is required!
-> Note: This results may vary by up to 20 minutes.  
-> Note: `3.0.0 <= x` doesn't support proxies.
+
+> ![Note]
+> This results may vary by up to 20 minutes.
+
+> ![Note]
+> `3.0.0 <= x` doesn't support proxies.
 
 ## Usage
 
 ### Get Started
 
 ```js
+// ESM
+import { Finance, symbols, currencyCodesSymbols, cryptoCurrencyCodesSymbols } from "google-finance-quote";
+// CJS
 const { Finance, symbols, currencyCodesSymbols, cryptoCurrencyCodesSymbols } = require("google-finance-quote");
 
 console.log(symbols); // Returns available symbols.
@@ -19,7 +26,7 @@ console.log(cryptoCurrencyCodesSymbols); // Returns available crypto currency co
 const finance = new Finance(); // You can use this: new Finance({ from 'USD', to: 'JPY' });
 
 finance
-  .setFrom('USD');
+  .setFrom('USD')
   .setTo('JPY');
 
 (async () => {
