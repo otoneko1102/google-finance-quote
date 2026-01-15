@@ -1,11 +1,24 @@
 {
   "name": "google-finance-quote",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Node Google Finance API wrapper for free. No API key is required!",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "dist/cjs/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/cjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:post": "node ./build/copy-types.js && node ./build/rename-esm.js",
+    "build": "npm run build:cjs && npm run build:esm && npm run build:post",
+    "prepare": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write ./src/ ./build/"
   },
   "repository": {
     "type": "git",
@@ -33,9 +46,12 @@
   },
   "homepage": "https://github.com/otoneko1102/google-finance-quote#readme",
   "dependencies": {
-    "axios": "^1.7.9"
+    "axios": "^1.13.2"
   },
   "devDependencies": {
-    "@types/node": "^22.13.2"
+    "@types/axios": "^0.14.4",
+    "@types/node": "^25.0.8",
+    "prettier": "^3.8.0",
+    "typescript": "^5.9.3"
   }
 }
