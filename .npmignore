@@ -1,3 +1,21 @@
-node_modules
-tests
-package-lock.json
+.prettierrc.json
+
+# TypeScript source and configs
+src/
+tsconfig.json
+tsconfig.cjs.json
+tsconfig.esm.json
+*.ts
+
+# Build scripts and helpers
+build/
+
+# Local dev files
+tests/
+
+# Node and OS
+node_modules/
+
+# Logs
+npm-debug.log*
+*.log
