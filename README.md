@@ -47,4 +47,5 @@ finance
   - **.quote(amount?: number): Promise<{ success: boolean, rate: number }>**
   Returns the converted amount based on the exchange rate.
 
-> Note: If the current rate cannot be obtained due to rate limits or network errors, success: false is returned.
+> [!Note]  
+> If the current rate cannot be obtained due to rate limits or network errors, success: false is returned.
